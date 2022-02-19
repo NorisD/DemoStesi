@@ -35,7 +35,7 @@ namespace Demo.BLL
             {
                 esiste = _DbModelEntities.Articoli.Any(e => e.ARCODART == arcodart);
             }
-            if (esiste)
+            if (!esiste)
             {
                 _DbModelEntities.Articoli.Add(articolo);
                 _DbModelEntities.SaveChanges();
@@ -57,7 +57,6 @@ namespace Demo.BLL
         {
             Articoli oArticolo = new Articoli();
 
-            var esiste = false;
             if (CodArt.Length != 0)
             {
                 oArticolo = _DbModelEntities.Articoli.FirstOrDefault(a => a.ARCODART.Equals(CodArt));

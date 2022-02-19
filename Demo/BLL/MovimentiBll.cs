@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Demo.Model;
 
+
 namespace Demo.BLL
 {
     public class MovimentiBll
@@ -27,15 +28,16 @@ namespace Demo.BLL
             }
         }
         // 3.Metodi di servizio
-       public bool Movimenta(cMovimenta movimenta)
+       public bool Movimenta(oMovimenta movimenta)
         {
+
             log_Operazioni operazione = new log_Operazioni()
             {
                 MVCODART = movimenta.CodArt,
                 MVCODUBI = movimenta.Ubica,
                 MVCODUTE = movimenta.CodUte,
                 MVTIPMOV = movimenta.Tipo,
-                MVQTAMOV = movimenta.QtaMov,
+                MVQTAMOV = (decimal)movimenta.QtaMov,
                 MVDATMOV = DateTime.Now,
                 MVCODCOM = movimenta.commessa
 
@@ -53,14 +55,16 @@ namespace Demo.BLL
                 return false;
             }
         }
+
+
     }
-    public class cMovimenta
+    public class oMovimenta
     {
         public string Tipo { get; set; }
         public string Ubica { get; set; }
         public string CodArt { get; set; }
         public int CodUte { get; set; }
-        public decimal QtaMov { get; set; }
+        public decimal? QtaMov { get; set; }
         public string commessa { get; set; }
     }
 }

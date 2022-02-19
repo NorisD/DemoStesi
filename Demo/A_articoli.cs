@@ -56,7 +56,7 @@ namespace Demo
                     {
                         Codice = a.ARCODART,
                         Descrizione = a.ARDESART
-                    }).ToList(); ;
+                    }).ToList(); 
             }
 
         }
@@ -73,9 +73,12 @@ namespace Demo
             ArticoloBll articolibill = new ArticoloBll(encConnection);
 
             K_Movimenta fmovimenta = new K_Movimenta();
-            fmovimenta.txmCodArt.Text = txCodArt.Text;
-            fmovimenta.txTipo.Text = "V";
-           // fmovimenta.txmDesArt.Text = 
+            fmovimenta.txmCodArt.Text = txCodArt2.Text;
+            fmovimenta.txTipo.Text = "Versamento";
+            fmovimenta.txmDesArt.Text = articolibill.GetArticolo(txCodArt2.Text).ARDESART;
+            fmovimenta.btMovimenta.Text = "Versa";
+            fmovimenta.Text = "Versamento";
+            fmovimenta.Show();
 
         }
 
@@ -87,6 +90,20 @@ namespace Demo
         private void ZoomArt_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string encConnection = ConfigurationManager.ConnectionStrings["DEMOWMNEntities"].ConnectionString;
+            ArticoloBll articolibill = new ArticoloBll(encConnection);
+
+            K_Movimenta fmovimenta = new K_Movimenta();
+            fmovimenta.txmCodArt.Text = txCodArt2.Text;
+            fmovimenta.txTipo.Text = "Preleva";
+            fmovimenta.txmDesArt.Text = articolibill.GetArticolo(txCodArt2.Text).ARDESART;
+            fmovimenta.btMovimenta.Text = "Preleva";
+            fmovimenta.Text = "Preleva";
+            fmovimenta.Show();
         }
     }
 }
