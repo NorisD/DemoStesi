@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf55fdd71a7645c9b98db7b4272b2371" Name="Diagram1">
+        <EntityTypeShape EntityType="DEMOWMNModel.Articoli" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMOWMNModel.Com_essa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMOWMNModel.log_Operazioni" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMOWMNModel.Saldiarti" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMOWMNModel.Utenti" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMOWMNModel.FK__Saldiarti__SLCOD__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
