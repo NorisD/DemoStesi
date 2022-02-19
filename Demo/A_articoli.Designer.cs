@@ -34,6 +34,9 @@
             this.txDesArt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ZoomArt = new System.Windows.Forms.DataGridView();
+            this.btVersa = new System.Windows.Forms.Button();
+            this.txCodArt2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ZoomArt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +69,7 @@
             // 
             // txDesArt
             // 
-            this.txDesArt.Location = new System.Drawing.Point(177, 43);
+            this.txDesArt.Location = new System.Drawing.Point(153, 43);
             this.txDesArt.MaxLength = 100;
             this.txDesArt.Name = "txDesArt";
             this.txDesArt.Size = new System.Drawing.Size(406, 20);
@@ -84,17 +87,49 @@
             // ZoomArt
             // 
             this.ZoomArt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ZoomArt.Location = new System.Drawing.Point(28, 86);
+            this.ZoomArt.Location = new System.Drawing.Point(28, 69);
             this.ZoomArt.Name = "ZoomArt";
             this.ZoomArt.Size = new System.Drawing.Size(555, 318);
             this.ZoomArt.TabIndex = 5;
+            this.ZoomArt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ZoomArt_CellClick);
             this.ZoomArt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ZoomArt_CellContentClick);
+            // 
+            // btVersa
+            // 
+            this.btVersa.Location = new System.Drawing.Point(607, 325);
+            this.btVersa.Name = "btVersa";
+            this.btVersa.Size = new System.Drawing.Size(75, 23);
+            this.btVersa.TabIndex = 6;
+            this.btVersa.Text = "Versa";
+            this.btVersa.UseVisualStyleBackColor = true;
+            this.btVersa.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txCodArt2
+            // 
+            this.txCodArt2.Location = new System.Drawing.Point(464, 393);
+            this.txCodArt2.MaxLength = 40;
+            this.txCodArt2.Name = "txCodArt2";
+            this.txCodArt2.Size = new System.Drawing.Size(119, 20);
+            this.txCodArt2.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(418, 398);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Articolo";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // A_articoli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 432);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txCodArt2);
+            this.Controls.Add(this.btVersa);
             this.Controls.Add(this.ZoomArt);
             this.Controls.Add(this.txDesArt);
             this.Controls.Add(this.label2);
@@ -118,6 +153,9 @@
         private System.Windows.Forms.TextBox txDesArt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView ZoomArt;
+        private System.Windows.Forms.Button btVersa;
+        private System.Windows.Forms.TextBox txCodArt2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

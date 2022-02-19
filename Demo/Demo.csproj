@@ -64,6 +64,12 @@
       <DependentUpon>A_articoli.cs</DependentUpon>
     </Compile>
     <Compile Include="BLL\MovimentiBll.cs" />
+    <Compile Include="K_Movimenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="K_Movimenta.Designer.cs">
+      <DependentUpon>K_Movimenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Articoli.cs">
       <DependentUpon>DemoWMNModel.tt</DependentUpon>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="A_articoli.resx">
       <DependentUpon>A_articoli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="K_Movimenta.resx">
+      <DependentUpon>K_Movimenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

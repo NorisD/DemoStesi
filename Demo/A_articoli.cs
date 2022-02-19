@@ -49,6 +49,7 @@ namespace Demo
             if (resp)
             {
                 txDesArt.Text = "";
+                txCodArt2.Text = txCodArt.Text;
                 txCodArt.Text = "";
                 ZoomArt.DataSource = articolibill.ListArticoli()
                     .Select(a => new
@@ -57,6 +58,29 @@ namespace Demo
                         Descrizione = a.ARDESART
                     }).ToList(); ;
             }
+
+        }
+
+        private void ZoomArt_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int irow = ZoomArt.SelectedCells[0].RowIndex;
+            txCodArt2.Text = ZoomArt.Rows[irow].Cells[0].Value.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string encConnection = ConfigurationManager.ConnectionStrings["DEMOWMNEntities"].ConnectionString;
+            ArticoloBll articolibill = new ArticoloBll(encConnection);
+
+            K_Movimenta fmovimenta = new K_Movimenta();
+            fmovimenta.txmCodArt.Text = txCodArt.Text;
+            fmovimenta.txTipo.Text = "V";
+           // fmovimenta.txmDesArt.Text = 
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
 

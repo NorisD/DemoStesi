@@ -35,7 +35,7 @@ namespace Demo.BLL
             {
                 esiste = _DbModelEntities.Articoli.Any(e => e.ARCODART == arcodart);
             }
-            if (arcodart.Length != 0 && !esiste)
+            if (esiste)
             {
                 _DbModelEntities.Articoli.Add(articolo);
                 _DbModelEntities.SaveChanges();
@@ -50,30 +50,26 @@ namespace Demo.BLL
                 return false;
             }
 
-        }
 
+
+        }
+        public Articoli GetArticolo(string CodArt)
+        {
+            Articoli oArticolo = new Articoli();
+
+            var esiste = false;
+            if (CodArt.Length != 0)
+            {
+                oArticolo = _DbModelEntities.Articoli.FirstOrDefault(a => a.ARCODART.Equals(CodArt));
+            }
+            return oArticolo;
+        }
         public List<Articoli> ListArticoli()
         {
             List<Articoli> articolis = _DbModelEntities.Articoli.ToList();
             return articolis;
         }
-        public Articoli GetArticoli(string codart)
-        {
-            var esiste = false;
-            if (codart.Length != 0)
-            {
-                esiste = _DbModelEntities.Articoli.Any(e => e.ARCODART == codart);
-            }
-            if (esiste) { 
-                var articolo = _DbModelEntities.Articoli.Where(e => e.ARCODART.Equals(codart))
-                    .FirstOrDefault();
-                return articolo;
-            }
-            else { 
-                _ = MessageBox.Show("Articolo non esiste");
-                return null;
-            }
-        }
+
 
     }
 }

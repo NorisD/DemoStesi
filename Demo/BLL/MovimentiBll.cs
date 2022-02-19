@@ -41,7 +41,17 @@ namespace Demo.BLL
 
 
             };
-
+            try
+            {
+                _DbModelEntities.log_Operazioni.Add(operazione);
+                _DbModelEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception err)
+            {
+                _ = MessageBox.Show(err.Message);
+                return false;
+            }
         }
     }
     public class cMovimenta
