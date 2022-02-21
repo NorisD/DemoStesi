@@ -101,10 +101,18 @@
             // 
             // NmQtamov
             // 
+            this.NmQtamov.DecimalPlaces = 2;
+            this.NmQtamov.ForeColor = System.Drawing.SystemColors.WindowText;
             this.NmQtamov.Location = new System.Drawing.Point(238, 58);
+            this.NmQtamov.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.NmQtamov.Name = "NmQtamov";
             this.NmQtamov.Size = new System.Drawing.Size(120, 20);
             this.NmQtamov.TabIndex = 10;
+            this.NmQtamov.ThousandsSeparator = true;
             this.NmQtamov.ValueChanged += new System.EventHandler(this.NmQtamov_ValueChanged);
             // 
             // txTipo

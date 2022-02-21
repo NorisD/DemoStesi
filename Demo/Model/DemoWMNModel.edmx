@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DEMOWMNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DEMOWMNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articoli">
           <Key>
             <PropertyRef Name="ARCODART" />
@@ -30,6 +30,7 @@
           <Property Name="MVDATMOV" Type="datetime" />
           <Property Name="MVTIPMOV" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="MVCODCOM" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="MVQTAMOV" Type="decimal" Precision="12" Scale="3" />
         </EntityType>
         <EntityType Name="Saldiarti">
           <Key>
@@ -120,8 +121,7 @@
             <End Role="Saldiarti" EntitySet="Saldiarti" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DEMOWMNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -131,8 +131,8 @@
           </Key>
           <Property Name="ARCODART" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ARDESART" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="log_Operazioni" Relationship="Self.FK__log_Opera__MVCOD__3B75D760" FromRole="Articoli" ToRole="log_Operazioni" />
           <NavigationProperty Name="Saldiarti" Relationship="Self.FK__Saldiarti__SLCOD__286302EC" FromRole="Articoli" ToRole="Saldiarti" />
+          <NavigationProperty Name="log_Operazioni" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760" FromRole="Articoli" ToRole="log_Operazioni" />
         </EntityType>
         <EntityType Name="Com_essa">
           <Key>
@@ -140,22 +140,7 @@
           </Key>
           <Property Name="CNCODCOM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CNDESCRI" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="log_Operazioni" Relationship="Self.FK__log_Opera__MVCOD__3D5E1FD2" FromRole="Com_essa" ToRole="log_Operazioni" />
-        </EntityType>
-        <EntityType Name="log_Operazioni">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MVCODART" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MVCODUBI" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MVCODUTE" Type="Int32" Nullable="false" />
-          <Property Name="MVDATMOV" Type="DateTime" Precision="3" />
-          <Property Name="MVTIPMOV" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MVCODCOM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Articoli" Relationship="Self.FK__log_Opera__MVCOD__3B75D760" FromRole="log_Operazioni" ToRole="Articoli" />
-          <NavigationProperty Name="Com_essa" Relationship="Self.FK__log_Opera__MVCOD__3D5E1FD2" FromRole="log_Operazioni" ToRole="Com_essa" />
-          <NavigationProperty Name="Utenti" Relationship="Self.FK__log_Opera__MVCOD__3C69FB99" FromRole="log_Operazioni" ToRole="Utenti" />
+          <NavigationProperty Name="log_Operazioni" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2" FromRole="Com_essa" ToRole="log_Operazioni" />
         </EntityType>
         <EntityType Name="Saldiarti">
           <Key>
@@ -175,20 +160,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="UTNome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UTPASSW" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="log_Operazioni" Relationship="Self.FK__log_Opera__MVCOD__3C69FB99" FromRole="Utenti" ToRole="log_Operazioni" />
+          <NavigationProperty Name="log_Operazioni" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99" FromRole="Utenti" ToRole="log_Operazioni" />
         </EntityType>
-        <Association Name="FK__log_Opera__MVCOD__3B75D760">
-          <End Role="Articoli" Type="Self.Articoli" Multiplicity="1" />
-          <End Role="log_Operazioni" Type="Self.log_Operazioni" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articoli">
-              <PropertyRef Name="ARCODART" />
-            </Principal>
-            <Dependent Role="log_Operazioni">
-              <PropertyRef Name="MVCODART" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Saldiarti__SLCOD__286302EC">
           <End Role="Articoli" Type="Self.Articoli" Multiplicity="1" />
           <End Role="Saldiarti" Type="Self.Saldiarti" Multiplicity="*" />
@@ -201,9 +174,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="DEMOWMNEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articoli" EntityType="Self.Articoli" />
+          <EntitySet Name="Com_essa" EntityType="Self.Com_essa" />
+          <EntitySet Name="Saldiarti" EntityType="Self.Saldiarti" />
+          <EntitySet Name="Utenti" EntityType="Self.Utenti" />
+          <AssociationSet Name="FK__Saldiarti__SLCOD__286302EC" Association="Self.FK__Saldiarti__SLCOD__286302EC">
+            <End Role="Articoli" EntitySet="Articoli" />
+            <End Role="Saldiarti" EntitySet="Saldiarti" />
+          </AssociationSet>
+          <EntitySet Name="log_Operazioni" EntityType="DEMOWMNModel.log_Operazioni" />
+          <AssociationSet Name="FK__log_Opera__MVCOD__3B75D760" Association="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760">
+            <End Role="Articoli" EntitySet="Articoli" />
+            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log_Opera__MVCOD__3D5E1FD2" Association="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2">
+            <End Role="Com_essa" EntitySet="Com_essa" />
+            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log_Opera__MVCOD__3C69FB99" Association="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99">
+            <End Role="Utenti" EntitySet="Utenti" />
+            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
+          </AssociationSet>
+          </EntityContainer>
+        <EnumType Name="Ubica">
+          <Member Name="AC" />
+          <Member Name="PR" />
+          <Member Name="CO" />
+          <Member Name="US" />
+        </EnumType>
+        <EntityType Name="log_Operazioni">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MVCODART" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MVCODUBI" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="MVCODUTE" Type="Int32" Nullable="false" />
+          <Property Name="MVDATMOV" Type="DateTime" Precision="3" />
+          <Property Name="MVTIPMOV" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MVCODCOM" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MVQTAMOV" Type="Decimal" Precision="12" Scale="3" />
+          <NavigationProperty Name="Articoli" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760" FromRole="log_Operazioni" ToRole="Articoli" />
+          <NavigationProperty Name="Com_essa" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2" FromRole="log_Operazioni" ToRole="Com_essa" />
+          <NavigationProperty Name="Utenti" Relationship="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99" FromRole="log_Operazioni" ToRole="Utenti" />
+        </EntityType>
+        <Association Name="FK__log_Opera__MVCOD__3B75D760">
+          <End Type="DEMOWMNModel.Articoli" Role="Articoli" Multiplicity="1" />
+          <End Type="DEMOWMNModel.log_Operazioni" Role="log_Operazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articoli">
+              <PropertyRef Name="ARCODART" />
+            </Principal>
+            <Dependent Role="log_Operazioni">
+              <PropertyRef Name="MVCODART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__log_Opera__MVCOD__3D5E1FD2">
-          <End Role="Com_essa" Type="Self.Com_essa" Multiplicity="1" />
-          <End Role="log_Operazioni" Type="Self.log_Operazioni" Multiplicity="*" />
+          <End Type="DEMOWMNModel.Com_essa" Role="Com_essa" Multiplicity="1" />
+          <End Type="DEMOWMNModel.log_Operazioni" Role="log_Operazioni" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Com_essa">
               <PropertyRef Name="CNCODCOM" />
@@ -214,8 +244,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__log_Opera__MVCOD__3C69FB99">
-          <End Role="Utenti" Type="Self.Utenti" Multiplicity="1" />
-          <End Role="log_Operazioni" Type="Self.log_Operazioni" Multiplicity="*" />
+          <End Type="DEMOWMNModel.Utenti" Role="Utenti" Multiplicity="1" />
+          <End Type="DEMOWMNModel.log_Operazioni" Role="log_Operazioni" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Utenti">
               <PropertyRef Name="ID" />
@@ -225,35 +255,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DEMOWMNEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Articoli" EntityType="Self.Articoli" />
-          <EntitySet Name="Com_essa" EntityType="Self.Com_essa" />
-          <EntitySet Name="log_Operazioni" EntityType="Self.log_Operazioni" />
-          <EntitySet Name="Saldiarti" EntityType="Self.Saldiarti" />
-          <EntitySet Name="Utenti" EntityType="Self.Utenti" />
-          <AssociationSet Name="FK__log_Opera__MVCOD__3B75D760" Association="Self.FK__log_Opera__MVCOD__3B75D760">
-            <End Role="Articoli" EntitySet="Articoli" />
-            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Saldiarti__SLCOD__286302EC" Association="Self.FK__Saldiarti__SLCOD__286302EC">
-            <End Role="Articoli" EntitySet="Articoli" />
-            <End Role="Saldiarti" EntitySet="Saldiarti" />
-          </AssociationSet>
-          <AssociationSet Name="FK__log_Opera__MVCOD__3D5E1FD2" Association="Self.FK__log_Opera__MVCOD__3D5E1FD2">
-            <End Role="Com_essa" EntitySet="Com_essa" />
-            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
-          </AssociationSet>
-          <AssociationSet Name="FK__log_Opera__MVCOD__3C69FB99" Association="Self.FK__log_Opera__MVCOD__3C69FB99">
-            <End Role="Utenti" EntitySet="Utenti" />
-            <End Role="log_Operazioni" EntitySet="log_Operazioni" />
-          </AssociationSet>
-        </EntityContainer>
-        <EnumType Name="Ubica">
-          <Member Name="AC" />
-          <Member Name="PR" />
-          <Member Name="CO" />
-          <Member Name="US" />
-        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -276,19 +277,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="log_Operazioni">
-            <EntityTypeMapping TypeName="DEMOWMNModel.log_Operazioni">
-              <MappingFragment StoreEntitySet="log_Operazioni">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MVCODART" ColumnName="MVCODART" />
-                <ScalarProperty Name="MVCODUBI" ColumnName="MVCODUBI" />
-                <ScalarProperty Name="MVCODUTE" ColumnName="MVCODUTE" />
-                <ScalarProperty Name="MVDATMOV" ColumnName="MVDATMOV" />
-                <ScalarProperty Name="MVTIPMOV" ColumnName="MVTIPMOV" />
-                <ScalarProperty Name="MVCODCOM" ColumnName="MVCODCOM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Saldiarti">
             <EntityTypeMapping TypeName="DEMOWMNModel.Saldiarti">
               <MappingFragment StoreEntitySet="Saldiarti">
@@ -305,6 +293,20 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UTNome" ColumnName="UTNome" />
                 <ScalarProperty Name="UTPASSW" ColumnName="UTPASSW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log_Operazioni">
+            <EntityTypeMapping TypeName="DEMOWMNModel.log_Operazioni">
+              <MappingFragment StoreEntitySet="log_Operazioni">
+                <ScalarProperty Name="MVQTAMOV" ColumnName="MVQTAMOV" />
+                <ScalarProperty Name="MVCODCOM" ColumnName="MVCODCOM" />
+                <ScalarProperty Name="MVTIPMOV" ColumnName="MVTIPMOV" />
+                <ScalarProperty Name="MVDATMOV" ColumnName="MVDATMOV" />
+                <ScalarProperty Name="MVCODUTE" ColumnName="MVCODUTE" />
+                <ScalarProperty Name="MVCODUBI" ColumnName="MVCODUBI" />
+                <ScalarProperty Name="MVCODART" ColumnName="MVCODART" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

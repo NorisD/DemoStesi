@@ -27,8 +27,8 @@ namespace Demo.Model
     
         public virtual DbSet<Articoli> Articoli { get; set; }
         public virtual DbSet<Com_essa> Com_essa { get; set; }
-        public virtual DbSet<log_Operazioni> log_Operazioni { get; set; }
         public virtual DbSet<Saldiarti> Saldiarti { get; set; }
         public virtual DbSet<Utenti> Utenti { get; set; }
+        public virtual DbSet<log_Operazioni> log_Operazioni { get; set; }
     }
 }

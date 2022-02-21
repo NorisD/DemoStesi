@@ -22,7 +22,7 @@ namespace Demo.Model
         public string MVTIPMOV { get; set; }
         public string MVCODCOM { get; set; }
         public Nullable<decimal> MVQTAMOV { get; set; }
-
+    
         public virtual Articoli Articoli { get; set; }
         public virtual Com_essa Com_essa { get; set; }
         public virtual Utenti Utenti { get; set; }

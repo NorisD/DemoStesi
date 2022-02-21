@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Demo.Model;
+using System;
 using System.Windows.Forms;
-using Demo.Model;
 
 
 namespace Demo.BLL
@@ -28,7 +24,7 @@ namespace Demo.BLL
             }
         }
         // 3.Metodi di servizio
-       public bool Movimenta(oMovimenta movimenta)
+        public bool Movimenta(oMovimenta movimenta)
         {
 
             log_Operazioni operazione = new log_Operazioni()

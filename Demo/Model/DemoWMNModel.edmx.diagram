@@ -7,14 +7,14 @@
       <Diagram DiagramId="bf55fdd71a7645c9b98db7b4272b2371" Name="Diagram1">
         <EntityTypeShape EntityType="DEMOWMNModel.Articoli" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DEMOWMNModel.Com_essa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMOWMNModel.log_Operazioni" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DEMOWMNModel.Saldiarti" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DEMOWMNModel.Utenti" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="DEMOWMNModel.FK__Saldiarti__SLCOD__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="DEMOWMNModel.log_Operazioni" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3B75D760" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3D5E1FD2" />
+        <AssociationConnector Association="DEMOWMNModel.FK__log_Opera__MVCOD__3C69FB99" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
